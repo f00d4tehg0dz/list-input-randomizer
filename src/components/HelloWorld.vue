@@ -15,12 +15,13 @@
         <section class="tiles">
           <article class="style1">
             <span class="image">
-              <img src="images/.jpg" alt="">
+              <!-- <img src="images/.jpg" alt=""> -->
               <p>{{ chosenKeyArr }}</p>
               <button style="backgroundColor:rgb(0 149 255)" v-on:click="randomizeKey">Key</button>
               <button type="button" class="greenBtn" @click="addKeyArr">
                 +
               </button>
+            </span>
               <form action="post">
                 <div v-for="(key, index) in keyArr" :key="index">
                   <div class="flex justify-start ml-2 mt-4 inputArr">
@@ -41,7 +42,6 @@
                   {{ key }}
                 </option>
               </select> -->
-            </span>
             <h2></h2>
             <div class="content">
               <p></p>
@@ -49,12 +49,13 @@
           </article>
           <article class="style2">
             <span class="image">
-              <img src="images/.jpg" alt="">
+              <!-- <img src="images/.jpg" alt=""> -->
               <p>{{ chosenScaleArr }}</p>
               <button style="backgroundColor:#FF661A" v-on:click="randomizeScale">Scale</button>
               <button type="button" class="greenBtn" @click="addScaleArr">
                 +
               </button>
+            </span>
               <form action="post">
                 <div v-for="(scale, index) in scaleArr" :key="index">
                   <div class="flex justify-start ml-2 mt-4 inputArr">
@@ -74,7 +75,6 @@
                   {{ scale }}
                 </option>
               </select> -->
-            </span>
             <h2></h2>
             <div class="content">
               <p></p>
@@ -82,12 +82,13 @@
           </article>
           <article class="style3">
             <span class="image">
-              <img src="images/.jpg" alt="">
+              <!-- <img src="images/.jpg" alt=""> -->
               <p>{{ chosenTempoArr }}</p>
               <button style="backgroundColor:#12b9ad" v-on:click="randomizeTempo">Tempo</button>
               <button type="button" class="greenBtn" @click="addTempoArr">
                 +
               </button>
+            </span>
               <form action="post">
                 <div v-for="(tempo, index) in tempoArr" :key="index">
                   <div class="flex justify-start ml-2 mt-4 inputArr">
@@ -107,7 +108,6 @@
                   {{ tempo }}
                 </option>
               </select> -->
-            </span>
             <h2></h2>
             <div class="content">
               <p></p>
@@ -115,12 +115,13 @@
           </article>
           <article class="style4">
             <span class="image">
-              <img src="images/.jpg" alt="">
+              <!-- <img src="images/.jpg" alt=""> -->
               <p>{{ chosenTArr }}</p>
               <button style="backgroundColor:#7942ff" v-on:click="randomizeT">Technique</button>
               <button type="button" class="greenBtn" @click="addTArr">
                 +
               </button>
+            </span>
               <form action="post">
                 <div v-for="(technique, index) in tArr" :key="index">
                   <div class="flex justify-start ml-2 mt-4 inputArr">
@@ -140,7 +141,6 @@
                   {{ technique }}
                 </option>
               </select> -->
-            </span>
             <h2></h2>
             <div class="content">
               <p></p>
@@ -148,12 +148,13 @@
           </article>
           <article class="style5">
             <span class="image">
-              <img src="images/.jpg" alt="">
+              <!-- <img src="images/.jpg" alt=""> -->
               <p>{{ chosenFxArr }}</p>
               <button style="backgroundColor:#33b65b" v-on:click="randomizeFx">Fx</button>
               <button type="button" class="greenBtn" @click="addFxArr">
                 +
               </button>
+            </span>
               <form action="post">
                 <div v-for="(fx, index) in fxArr" :key="index">
                   <div class="flex justify-start ml-2 mt-4 inputArr">
@@ -173,7 +174,6 @@
                   {{ fx }}
                 </option>
               </select> -->
-            </span>
             <h2></h2>
             <div class="content">
               <p></p>
@@ -181,9 +181,9 @@
           </article>
           <article class="style6">
             <span class="image">
-              <img src="images/.jpg" alt="">
+              <!-- <img src="images/.jpg" alt=""> -->
               <p>Randomize All</p>
-              <button v-on:click="randomizeAll">Randomize All</button>
+              <button v-on:click="randomizeAll">Randomize</button>
             </span>
             <h2></h2>
             <div class="content">
@@ -375,7 +375,7 @@ export default {
 <style scoped>
 input[type=text],
 select {
-  width: 80%;
+  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -385,9 +385,18 @@ select {
 }
 
 .inputArr {
-  text-align: right;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
 }
-
+form {
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
 .mode-toggle {
   position: relative;
   padding: 0;
@@ -465,7 +474,7 @@ button {
   background: #ed4652;
   color: #fff;
   text-transform: uppercase;
-  font-size: 1.5em;
+  font-size: 1.25em;
   padding: 10px 20px;
   border-radius: 10px;
   cursor: pointer;
