@@ -32,7 +32,7 @@
                     <button
                       type="button"
                       class="ml-2 rounded-md border px-3 py-2 bg-red-600 text-white"
-                      @click="remove(index)"
+                      @click="removeKeyArr(index)"
                       v-show="index != 0"
                     >
                       -
@@ -74,7 +74,7 @@
                     <button
                       type="button"
                       class="ml-2 rounded-md border px-3 py-2 bg-red-600 text-white"
-                      @click="remove(index)"
+                      @click="removeScaleArr(index)"
                       v-show="index != 0"
                     >
                       -
@@ -115,7 +115,7 @@
                     <button
                       type="button"
                       class="ml-2 rounded-md border px-3 py-2 bg-red-600 text-white"
-                      @click="remove(index)"
+                      @click="removeTempoArr(index)"
                       v-show="index != 0"
                     >
                       -
@@ -156,7 +156,7 @@
                     <button
                       type="button"
                       class="ml-2 rounded-md border px-3 py-2 bg-red-600 text-white"
-                      @click="remove(index)"
+                      @click="removeTArr(index)"
                       v-show="index != 0"
                     >
                       -
@@ -197,7 +197,7 @@
                     <button
                       type="button"
                       class="ml-2 rounded-md border px-3 py-2 bg-red-600 text-white"
-                      @click="remove(index)"
+                      @click="removeFxArr(index)"
                       v-show="index != 0"
                     >
                       -
