@@ -1,4 +1,4 @@
-# random-dropdown-music-generator
+# list-input-randomizer
 
 > A Vue.js project
 
