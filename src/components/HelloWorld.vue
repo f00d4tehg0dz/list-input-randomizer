@@ -15,6 +15,32 @@
               <img src="images/.jpg" alt="">
               <p>{{ chosenKeyArr }}</p>
               <button style="backgroundColor:rgb(0 149 255)" v-on:click="randomizeKey">Key</button>
+              <button type="button"
+                class="greenBtn"
+                @click="addKeyArr">
+                Add
+              </button>
+              <form action="post">
+                  <div v-for="(key, index) in keyArr" :key="index">
+                  <div class="flex justify-start ml-2 mt-4 inputArr">
+                    <input
+                      type="text"
+                      name="keyArr"
+                      v-model="keyArr[index]" v-on:input="changed"
+                      placeholder="enter you keys"
+                    />
+                    <button
+                      type="button"
+                      class="ml-2 rounded-md border px-3 py-2 bg-red-600 text-white"
+                      @click="remove(index)"
+                      v-show="index != 0"
+                    >
+                      -
+                    </button>
+                  </div>
+                </div>
+              </form>
+                <!-- {{ keyArr | json }} -->
               <!-- <select id="s1">
                 <option value="" v-for="key in keyArr" v-bind:key="key">
                   {{ key }}
@@ -31,6 +57,31 @@
               <img src="images/.jpg" alt="">
               <p>{{ chosenScaleArr }}</p>
               <button style="backgroundColor:#FF661A" v-on:click="randomizeScale">Scale</button>
+              <button type="button"
+                class="greenBtn"
+                @click="addScaleArr">
+                Add
+              </button>
+              <form action="post">
+                  <div v-for="(scale, index) in scaleArr" :key="index">
+                  <div class="flex justify-start ml-2 mt-4 inputArr">
+                    <input
+                      type="text"
+                      name="scaleArr"
+                      v-model="scaleArr[index]" v-on:input="changed"
+                      placeholder="enter you scales"
+                    />
+                    <button
+                      type="button"
+                      class="ml-2 rounded-md border px-3 py-2 bg-red-600 text-white"
+                      @click="remove(index)"
+                      v-show="index != 0"
+                    >
+                      -
+                    </button>
+                  </div>
+                </div>
+              </form>
               <!-- <select id="s2">
                 <option value="" v-for="scale in scaleArr" v-bind:key="scale">
                   {{ scale }}
@@ -47,6 +98,31 @@
               <img src="images/.jpg" alt="">
               <p>{{ chosenTempoArr }}</p>
               <button style="backgroundColor:#12b9ad" v-on:click="randomizeTempo">Tempo</button>
+              <button type="button"
+                class="greenBtn"
+                @click="addTempoArr">
+                Add
+              </button>
+              <form action="post">
+                  <div v-for="(tempo, index) in tempoArr" :key="index">
+                  <div class="flex justify-start ml-2 mt-4 inputArr">
+                    <input
+                      type="text"
+                      name="tempoArr"
+                      v-model="tempoArr[index]" v-on:input="changed"
+                      placeholder="enter you tempo"
+                    />
+                    <button
+                      type="button"
+                      class="ml-2 rounded-md border px-3 py-2 bg-red-600 text-white"
+                      @click="remove(index)"
+                      v-show="index != 0"
+                    >
+                      -
+                    </button>
+                  </div>
+                </div>
+              </form>
               <!-- <select id="s3">
                 <option value="" v-for="tempo in tempoArr" v-bind:key="tempo">
                   {{ tempo }}
@@ -61,10 +137,35 @@
           <article class="style4">
             <span class="image">
               <img src="images/.jpg" alt="">
-              <p>{{ chosenTechniqueArr }}</p>
+              <p>{{ chosenTArr }}</p>
               <button style="backgroundColor:#7942ff" v-on:click="randomizeT">Technique</button>
+              <button type="button"
+                class="greenBtn"
+                @click="addTArr">
+                Add
+              </button>
+              <form action="post">
+                  <div v-for="(technique, index) in tArr" :key="index">
+                  <div class="flex justify-start ml-2 mt-4 inputArr">
+                    <input
+                      type="text"
+                      name="techniqueArr"
+                      v-model="tArr[index]" v-on:input="changed"
+                      placeholder="enter you technique"
+                    />
+                    <button
+                      type="button"
+                      class="ml-2 rounded-md border px-3 py-2 bg-red-600 text-white"
+                      @click="remove(index)"
+                      v-show="index != 0"
+                    >
+                      -
+                    </button>
+                  </div>
+                </div>
+              </form>
               <!-- <select id="s4">
-                <option value="" v-for="technique in techniqueArr" v-bind:key="technique">
+                <option value="" v-for="technique in tArr" v-bind:key="technique">
                   {{ technique }}
                 </option>
               </select> -->
@@ -79,6 +180,31 @@
               <img src="images/.jpg" alt="">
               <p>{{ chosenFxArr }}</p>
               <button style="backgroundColor:#33b65b" v-on:click="randomizeFx">Fx</button>
+              <button type="button"
+                class="greenBtn"
+                @click="addFxArr">
+                Add
+              </button>
+              <form action="post">
+                  <div v-for="(fx, index) in fxArr" :key="index">
+                  <div class="flex justify-start ml-2 mt-4 inputArr">
+                    <input
+                      type="text"
+                      name="fxArr"
+                      v-model="fxArr[index]" v-on:input="changed"
+                      placeholder="enter you fx"
+                    />
+                    <button
+                      type="button"
+                      class="ml-2 rounded-md border px-3 py-2 bg-red-600 text-white"
+                      @click="remove(index)"
+                      v-show="index != 0"
+                    >
+                      -
+                    </button>
+                  </div>
+                </div>
+              </form>
               <!-- <select id="s5">
                 <option value="" v-for="fx in fxArr" v-bind:key="fx">
                   {{ fx }}
@@ -113,6 +239,7 @@ export default {
   data() {
     return {
       darkMode: false,
+      // Default Arrays
       keyArr: [
         'A',
         'B',
@@ -141,7 +268,7 @@ export default {
         '140',
       ],
       chosenTempoArr: 'Tempo',
-      techniqueArr: [
+      tArr: [
         'Harmonics',
         'Chords',
         'Octaves',
@@ -155,7 +282,7 @@ export default {
         'Rests',
         'Odd Time/Rhythm',
       ],
-      chosenTechniqueArr: 'Technique',
+      chosenTArr: 'Technique',
       fxArr: [
         'Wah',
         'Delay',
@@ -171,16 +298,49 @@ export default {
     };
   },
   methods: {
+    addKeyArr() {
+      this.keyArr.push('');
+    },
+    removeKeyArr(index) {
+      this.keyArr.splice(index, 1);
+    },
+    addScaleArr() {
+      this.scaleArr.push('');
+    },
+    removeScaleArr(index) {
+      this.scaleArr.splice(index, 1);
+    },
+    addTempoArr() {
+      this.tempoArr.push('');
+    },
+    removeTempoArr(index) {
+      this.tempoArr.splice(index, 1);
+    },
+    addTArr() {
+      this.tArr.push('');
+    },
+    removeTArr(index) {
+      this.tArr.splice(index, 1);
+    },
+    addFxArr() {
+      this.fxArr.push('');
+    },
+    removeFxArr(index) {
+      this.fxArr.splice(index, 1);
+    },
+    // Dark Mode
     dark() {
       document.querySelector('body').classList.add('dark-mode');
       this.darkMode = true;
       this.$emit('dark');
     },
+    // Light Mode
     light() {
       document.querySelector('body').classList.remove('dark-mode');
       this.darkMode = false;
       this.$emit('light');
     },
+    // Mode Toggle
     modeToggle() {
       if (this.darkMode || document.querySelector('body').classList.contains('dark-mode')) {
         this.light();
@@ -188,6 +348,7 @@ export default {
         this.dark();
       }
     },
+    // Shuffle Functions
     shuffleKeyArray() {
       const chosenNumber = Math.floor(Math.random() * this.keyArr.length);
       this.chosenKeyArr = this.keyArr[chosenNumber];
@@ -200,14 +361,15 @@ export default {
       const chosenNumber = Math.floor(Math.random() * this.tempoArr.length);
       this.chosenTempoArr = this.tempoArr[chosenNumber];
     },
-    shuffleTechniqueArray() {
-      const chosenNumber = Math.floor(Math.random() * this.techniqueArr.length);
-      this.chosenTechniqueArr = this.techniqueArr[chosenNumber];
+    shuffleTArray() {
+      const chosenNumber = Math.floor(Math.random() * this.tArr.length);
+      this.chosentArr = this.tArr[chosenNumber];
     },
     shuffleFxArray() {
       const chosenNumber = Math.floor(Math.random() * this.fxArr.length);
       this.chosenFxArr = this.fxArr[chosenNumber];
     },
+    // Randomize Func
     randomizeKey() {
       this.shuffleKeyArray(this.keyArr);
     },
@@ -218,7 +380,7 @@ export default {
       this.shuffleTempoArray(this.tempoArr);
     },
     randomizeT() {
-      this.shuffleTechniqueArray(this.techniqueArr);
+      this.shuffletArray(this.tArr);
     },
     randomizeFx() {
       this.shuffleFxArray(this.fxArr);
@@ -227,8 +389,15 @@ export default {
       this.shuffleKeyArray(this.keyArr);
       this.shuffleScaleArray(this.scaleArr);
       this.shuffleTempoArray(this.tempoArr);
-      this.shuffleTechniqueArray(this.techniqueArr);
+      this.shuffletArray(this.tArr);
       this.shuffleFxArray(this.fxArr);
+    },
+    changed() {
+      console.log(this.keyArr);
+      console.log(this.scaleArr);
+      console.log(this.tempoArr);
+      console.log(this.tArr);
+      console.log(this.fxArr);
     },
   },
   computed: {
@@ -241,6 +410,19 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+input[type=text], select {
+  width: 80%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.inputArr {
+  text-align: right;
+}
+
 
 .mode-toggle {
   position: relative;
@@ -321,6 +503,9 @@ button {
   border-radius: 10px;
   cursor: pointer;
   box-shadow: 0 1px 5px rgba(68, 68, 68, 0.5);
+}
+button.greenBtn {
+  background: #00c722;
 }
 
 article,
